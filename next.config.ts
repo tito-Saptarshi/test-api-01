@@ -1,46 +1,32 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
   typescript: {
-      ignoreBuildErrors: true,
+    ignoreBuildErrors: true,
   },
-  eslist: {
-        ignoreDuringBuilds: true,
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   images: {
-      remotePatterns: [
-          {
-              hostname: "avatar.vercel.sh",
-              port: "",
-          },
-          {
-              hostname: "utfs.io",
-              port: "",
-          },
-          {
-              hostname: "nvklcnxjewiqlubfmtab.supabase.co",
-              protocol: "https",
-              port: "",
-          },
-          {
-              hostname: "dummyimage.com",
-              protocol: "https",
-              port: "",
-          },
-          {
-              hostname: "lh3.googleusercontent.com",
-              protocol: "https",
-              port: "",
-          },
-      ]
-  },
-  
-  experimental: {
-      //...
-      serverless: {
-        timeout: 30, // Increase the timeout to 30 seconds
+    dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*",
       },
-    },
-
+    ],
+  },
+  experimental: {
+    ppr: "incremental",
+    after: true,
+  },
+  devIndicators: {
+    appIsrStatus: true,
+    buildActivity: true,
+    buildActivityPosition: "bottom-right",
+  },
 };
+
 
 export default nextConfig;
